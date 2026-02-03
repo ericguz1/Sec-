@@ -714,8 +714,1414 @@
         </div>
     </div>
 
-    <script src="questions.js"></script>
     <script>
+        // Security+ SY0-701 Comprehensive Question Bank
+        const questions = [
+    // Security Controls (Domain 1.0)
+    {
+        topic: "Security Controls",
+        question: "Which of the following best describes a technical security control?",
+        options: [
+            "Policies and procedures documented in the security manual",
+            "Security guards monitoring facility access points",
+            "Firewall rules blocking unauthorized network traffic",
+            "Employee security awareness training programs"
+        ],
+        correct: 2,
+        explanation: "Technical controls (also called logical controls) are security measures implemented through technology, such as firewalls, encryption, and access control systems. They are executed by computer systems rather than by people."
+    },
+    {
+        topic: "Security Controls",
+        question: "What type of control is a security awareness training program?",
+        options: [
+            "Technical control",
+            "Physical control",
+            "Administrative control",
+            "Preventive control"
+        ],
+        correct: 2,
+        explanation: "Security awareness training is an administrative (or managerial) control. Administrative controls are policies, procedures, and training that guide how people interact with security measures."
+    },
+    {
+        topic: "Encryption",
+        question: "Which cryptographic algorithm is asymmetric?",
+        options: [
+            "AES",
+            "3DES",
+            "RSA",
+            "Blowfish"
+        ],
+        correct: 2,
+        explanation: "RSA is an asymmetric encryption algorithm that uses a pair of keys (public and private). AES, 3DES, and Blowfish are all symmetric encryption algorithms that use a single shared key."
+    },
+    {
+        topic: "Encryption",
+        question: "What is the primary advantage of symmetric encryption over asymmetric encryption?",
+        options: [
+            "Better key distribution",
+            "Faster processing speed",
+            "Non-repudiation",
+            "Digital signatures"
+        ],
+        correct: 1,
+        explanation: "Symmetric encryption is much faster than asymmetric encryption because it uses simpler mathematical operations. However, it faces key distribution challenges that asymmetric encryption solves."
+    },
+    {
+        topic: "Hashing",
+        question: "What is the main difference between hashing and encryption?",
+        options: [
+            "Hashing is reversible, encryption is not",
+            "Hashing is one-way, encryption is two-way",
+            "Hashing requires a key, encryption does not",
+            "Hashing is slower than encryption"
+        ],
+        correct: 1,
+        explanation: "Hashing is a one-way function that cannot be reversed to obtain the original data. Encryption is a two-way function that can be decrypted using the appropriate key to recover the original data."
+    },
+    {
+        topic: "Hashing",
+        question: "Which hashing algorithm is considered cryptographically broken and should NOT be used?",
+        options: [
+            "SHA-256",
+            "MD5",
+            "SHA-3",
+            "BLAKE2"
+        ],
+        correct: 1,
+        explanation: "MD5 has known collision vulnerabilities and is considered cryptographically broken. SHA-256, SHA-3, and BLAKE2 are modern, secure hashing algorithms."
+    },
+    {
+        topic: "Digital Signatures",
+        question: "What does a digital signature provide?",
+        options: [
+            "Confidentiality only",
+            "Non-repudiation and integrity",
+            "Availability and confidentiality",
+            "Encryption and compression"
+        ],
+        correct: 1,
+        explanation: "Digital signatures provide non-repudiation (proof of origin) and integrity (proof the data hasn't been altered). They use asymmetric cryptography to sign data with a private key."
+    },
+    {
+        topic: "Digital Certificates",
+        question: "What is the purpose of a Certificate Revocation List (CRL)?",
+        options: [
+            "List all valid certificates",
+            "List certificates that are no longer trusted",
+            "Generate new certificates",
+            "Encrypt certificate data"
+        ],
+        correct: 1,
+        explanation: "A CRL contains a list of certificates that have been revoked before their expiration date and should no longer be trusted. It's published by the Certificate Authority."
+    },
+    
+    // Threat Actors & Vectors (Domain 2.0)
+    {
+        topic: "Threat Actors",
+        question: "Which threat actor is primarily motivated by financial gain?",
+        options: [
+            "Hacktivist",
+            "Nation-state",
+            "Organized crime",
+            "Insider threat"
+        ],
+        correct: 2,
+        explanation: "Organized crime threat actors are primarily motivated by financial gain through activities like ransomware, fraud, and theft of financial data. Hacktivists are motivated by ideology, and nation-states by strategic objectives."
+    },
+    {
+        topic: "Threat Vectors",
+        question: "What type of attack involves sending fraudulent emails that appear to come from a trusted source?",
+        options: [
+            "Vishing",
+            "Smishing",
+            "Phishing",
+            "Whaling"
+        ],
+        correct: 2,
+        explanation: "Phishing uses fraudulent emails to trick recipients into divulging sensitive information or clicking malicious links. Vishing uses voice calls, smishing uses SMS, and whaling targets high-level executives."
+    },
+    {
+        topic: "Social Engineering",
+        question: "An attacker follows an authorized person through a secure door without authentication. What is this called?",
+        options: [
+            "Tailgating",
+            "Shoulder surfing",
+            "Dumpster diving",
+            "Pretexting"
+        ],
+        correct: 0,
+        explanation: "Tailgating (or piggybacking) occurs when an unauthorized person follows an authorized person through a secure entry point without proper authentication."
+    },
+    {
+        topic: "Social Engineering",
+        question: "Which social engineering principle leverages people's desire to help others?",
+        options: [
+            "Authority",
+            "Scarcity",
+            "Familiarity",
+            "Trust"
+        ],
+        correct: 3,
+        explanation: "Trust is a social engineering principle that exploits people's natural desire to help others or be cooperative, making them more likely to comply with requests without proper verification."
+    },
+    {
+        topic: "Malware",
+        question: "Which type of malware is designed to hold data hostage?",
+        options: [
+            "Trojan",
+            "Worm",
+            "Ransomware",
+            "Rootkit"
+        ],
+        correct: 2,
+        explanation: "Ransomware encrypts a victim's files and demands payment for the decryption key. Trojans disguise themselves as legitimate software, worms self-replicate, and rootkits hide malicious activity."
+    },
+    {
+        topic: "Malware",
+        question: "What distinguishes a worm from a virus?",
+        options: [
+            "Worms require user interaction to spread",
+            "Worms can self-replicate without user interaction",
+            "Viruses encrypt files",
+            "Viruses hide in system processes"
+        ],
+        correct: 1,
+        explanation: "Worms can self-replicate and spread across networks without requiring user interaction, while viruses need to attach to files and typically require user action to spread."
+    },
+    {
+        topic: "Malware",
+        question: "What is a logic bomb?",
+        options: [
+            "Malware that spreads automatically",
+            "Code that executes when conditions are met",
+            "A denial of service attack",
+            "A type of ransomware"
+        ],
+        correct: 1,
+        explanation: "A logic bomb is malicious code that remains dormant until specific conditions are met (like a date, user action, or event), at which point it executes its payload."
+    },
+    {
+        topic: "Network Attacks",
+        question: "What type of attack involves an attacker intercepting communication between two parties?",
+        options: [
+            "Denial of Service (DoS)",
+            "Man-in-the-Middle (MitM)",
+            "SQL Injection",
+            "Cross-Site Scripting (XSS)"
+        ],
+        correct: 1,
+        explanation: "A Man-in-the-Middle (MitM) attack occurs when an attacker secretly intercepts and possibly alters communication between two parties who believe they are directly communicating with each other."
+    },
+    {
+        topic: "Network Attacks",
+        question: "Which attack floods a network with ICMP echo requests?",
+        options: [
+            "Smurf attack",
+            "SYN flood",
+            "Ping of death",
+            "Fragmentation attack"
+        ],
+        correct: 0,
+        explanation: "A Smurf attack floods a network with ICMP echo requests (pings) sent to a broadcast address with the victim's spoofed source IP, causing all hosts to reply to the victim and overwhelming it."
+    },
+    {
+        topic: "Network Attacks",
+        question: "What is ARP poisoning?",
+        options: [
+            "Corrupting DNS records",
+            "Mapping incorrect IP to MAC addresses",
+            "Flooding with TCP SYN packets",
+            "Exploiting buffer overflows"
+        ],
+        correct: 1,
+        explanation: "ARP poisoning involves sending fake ARP messages to associate the attacker's MAC address with another host's IP address, allowing the attacker to intercept or modify traffic intended for that host."
+    },
+    {
+        topic: "Application Attacks",
+        question: "Which attack exploits improperly sanitized user input in web applications?",
+        options: [
+            "DDoS",
+            "SQL Injection",
+            "ARP Poisoning",
+            "Session Hijacking"
+        ],
+        correct: 1,
+        explanation: "SQL Injection exploits web applications that don't properly validate or sanitize user input, allowing attackers to execute malicious SQL commands against the database."
+    },
+    {
+        topic: "Application Attacks",
+        question: "What does XSS (Cross-Site Scripting) allow an attacker to do?",
+        options: [
+            "Execute SQL queries",
+            "Inject malicious scripts into web pages",
+            "Intercept network traffic",
+            "Escalate privileges"
+        ],
+        correct: 1,
+        explanation: "XSS allows attackers to inject malicious scripts (usually JavaScript) into web pages viewed by other users, potentially stealing cookies, session tokens, or other sensitive information."
+    },
+    {
+        topic: "Application Attacks",
+        question: "What is CSRF (Cross-Site Request Forgery)?",
+        options: [
+            "Stealing user credentials",
+            "Forcing authenticated users to perform unwanted actions",
+            "Injecting SQL code",
+            "Bypassing authentication"
+        ],
+        correct: 1,
+        explanation: "CSRF tricks authenticated users into unknowingly executing unwanted actions on a web application where they're currently authenticated, exploiting the trust that a site has in the user's browser."
+    },
+    {
+        topic: "Vulnerabilities",
+        question: "What is a zero-day vulnerability?",
+        options: [
+            "A vulnerability discovered but not yet exploited",
+            "A vulnerability with no known patch or fix",
+            "A vulnerability that only exists for one day",
+            "A vulnerability in outdated software"
+        ],
+        correct: 1,
+        explanation: "A zero-day vulnerability is a security flaw that is unknown to the software vendor and for which no patch exists. The term refers to the fact that developers have 'zero days' to fix it before it can be exploited."
+    },
+    {
+        topic: "Vulnerabilities",
+        question: "What is privilege escalation?",
+        options: [
+            "Granting users more permissions than needed",
+            "Gaining higher access rights than authorized",
+            "Encrypting privileged account credentials",
+            "Monitoring privileged user activity"
+        ],
+        correct: 1,
+        explanation: "Privilege escalation is when an attacker or user gains elevated access rights beyond what they're authorized to have, potentially allowing them to perform unauthorized actions or access restricted data."
+    },
+
+    // Architecture & Design (Domain 3.0)
+    {
+        topic: "Network Architecture",
+        question: "What does a DMZ (Demilitarized Zone) provide?",
+        options: [
+            "Encrypted communication between networks",
+            "Isolation layer between internal and external networks",
+            "Backup storage for critical data",
+            "Authentication services for remote users"
+        ],
+        correct: 1,
+        explanation: "A DMZ is a network segment that acts as a buffer zone between an internal trusted network and an external untrusted network (usually the Internet), providing an additional layer of security."
+    },
+    {
+        topic: "Network Architecture",
+        question: "What is the purpose of network segmentation?",
+        options: [
+            "Increase network speed",
+            "Reduce the attack surface and contain breaches",
+            "Simplify network management",
+            "Reduce hardware costs"
+        ],
+        correct: 1,
+        explanation: "Network segmentation divides a network into smaller segments to reduce the attack surface, contain security breaches, and limit lateral movement by attackers."
+    },
+    {
+        topic: "Cloud Security",
+        question: "Which cloud service model gives users the most control?",
+        options: [
+            "SaaS (Software as a Service)",
+            "PaaS (Platform as a Service)",
+            "IaaS (Infrastructure as a Service)",
+            "FaaS (Function as a Service)"
+        ],
+        correct: 2,
+        explanation: "IaaS provides the most control to users, offering virtualized computing resources. Users manage the OS, applications, and data. PaaS abstracts the infrastructure, and SaaS provides complete applications with minimal user control."
+    },
+    {
+        topic: "Cloud Security",
+        question: "In a cloud environment, who is responsible for data classification and security?",
+        options: [
+            "Cloud service provider only",
+            "Customer only",
+            "Shared between provider and customer",
+            "Third-party auditor"
+        ],
+        correct: 1,
+        explanation: "In the shared responsibility model, customers are always responsible for their data classification, encryption, and security controls, regardless of the cloud service model used."
+    },
+    {
+        topic: "Virtualization",
+        question: "What security risk is associated with VM escape?",
+        options: [
+            "VMs consuming too many resources",
+            "Breaking out of a VM to access the hypervisor",
+            "VMs being powered off unexpectedly",
+            "Network latency between VMs"
+        ],
+        correct: 1,
+        explanation: "VM escape is when an attacker breaks out of a virtual machine to gain access to the hypervisor or host system, potentially compromising all VMs on that host."
+    },
+    {
+        topic: "Secure Protocols",
+        question: "What port does HTTPS use by default?",
+        options: [
+            "80",
+            "443",
+            "8080",
+            "22"
+        ],
+        correct: 1,
+        explanation: "HTTPS uses port 443 by default. Port 80 is used for HTTP, port 8080 is an alternative HTTP port, and port 22 is used for SSH."
+    },
+    {
+        topic: "Secure Protocols",
+        question: "Which protocol provides secure file transfer over SSH?",
+        options: [
+            "FTP",
+            "TFTP",
+            "SFTP",
+            "FTPS"
+        ],
+        correct: 2,
+        explanation: "SFTP (SSH File Transfer Protocol) provides secure file transfer over an SSH connection. FTPS uses SSL/TLS, while FTP and TFTP transmit data unencrypted."
+    },
+    {
+        topic: "Secure Protocols",
+        question: "What protocol is used for secure email transmission?",
+        options: [
+            "SMTP",
+            "POP3",
+            "S/MIME",
+            "IMAP"
+        ],
+        correct: 2,
+        explanation: "S/MIME (Secure/Multipurpose Internet Mail Extensions) provides encryption and digital signatures for email. SMTP, POP3, and IMAP are email protocols but don't inherently provide security features."
+    },
+    {
+        topic: "Wireless Security",
+        question: "Which wireless security protocol is most secure?",
+        options: [
+            "WEP",
+            "WPA",
+            "WPA2",
+            "WPA3"
+        ],
+        correct: 3,
+        explanation: "WPA3 is the most current and secure wireless security protocol. WEP is severely outdated and broken, while WPA and WPA2 have known vulnerabilities that WPA3 addresses."
+    },
+    {
+        topic: "Wireless Security",
+        question: "What wireless attack creates a fake access point?",
+        options: [
+            "Evil twin",
+            "Deauthentication",
+            "WPS attack",
+            "Rogue AP"
+        ],
+        correct: 0,
+        explanation: "An evil twin attack creates a fake wireless access point that mimics a legitimate one to trick users into connecting, allowing the attacker to intercept traffic or steal credentials."
+    },
+    {
+        topic: "Access Control",
+        question: "Which access control model uses security labels?",
+        options: [
+            "DAC (Discretionary Access Control)",
+            "MAC (Mandatory Access Control)",
+            "RBAC (Role-Based Access Control)",
+            "ABAC (Attribute-Based Access Control)"
+        ],
+        correct: 1,
+        explanation: "MAC (Mandatory Access Control) uses security labels (classifications) on subjects and objects. The system enforces access based on these labels according to a security policy that users cannot override."
+    },
+    {
+        topic: "Access Control",
+        question: "Which principle ensures users have only the access rights they need?",
+        options: [
+            "Defense in Depth",
+            "Least Privilege",
+            "Separation of Duties",
+            "Need to Know"
+        ],
+        correct: 1,
+        explanation: "The Principle of Least Privilege means users should have the minimum access rights necessary to perform their job functions. This limits potential damage from accidents or malicious actions."
+    },
+    {
+        topic: "Authentication",
+        question: "Which authentication factor is 'something you have'?",
+        options: [
+            "Password",
+            "Fingerprint",
+            "Smart card",
+            "PIN"
+        ],
+        correct: 2,
+        explanation: "A smart card represents 'something you have' in multi-factor authentication. Passwords and PINs are 'something you know', while fingerprints are 'something you are'."
+    },
+    {
+        topic: "Authentication",
+        question: "Which of the following is an example of multi-factor authentication?",
+        options: [
+            "Password and security question",
+            "Fingerprint and PIN",
+            "Two different passwords",
+            "Username and password"
+        ],
+        correct: 1,
+        explanation: "Fingerprint (something you are) and PIN (something you know) represent two different authentication factors. Two passwords or password and security question are both 'something you know' - a single factor."
+    },
+    {
+        topic: "Password Security",
+        question: "What is the purpose of salting in password storage?",
+        options: [
+            "Encrypt the password before hashing",
+            "Add random data to prevent rainbow table attacks",
+            "Compress the password to save storage space",
+            "Verify password complexity requirements"
+        ],
+        correct: 1,
+        explanation: "Salting adds random data to passwords before hashing to ensure identical passwords produce different hashes. This defeats rainbow table attacks and makes password cracking much harder."
+    },
+
+    // Operations (Domain 4.0)
+    {
+        topic: "Incident Response",
+        question: "What is the first phase of the incident response process?",
+        options: [
+            "Containment",
+            "Preparation",
+            "Detection",
+            "Recovery"
+        ],
+        correct: 1,
+        explanation: "Preparation is the first phase of incident response, involving developing policies, procedures, and tools needed to handle security incidents effectively."
+    },
+    {
+        topic: "Incident Response",
+        question: "What does the chain of custody ensure?",
+        options: [
+            "Evidence is properly encrypted",
+            "Evidence handling is documented and tracked",
+            "Incidents are reported promptly",
+            "Systems are properly backed up"
+        ],
+        correct: 1,
+        explanation: "Chain of custody is the chronological documentation that tracks who handled evidence, when, where, and why, ensuring evidence integrity and admissibility in legal proceedings."
+    },
+    {
+        topic: "Digital Forensics",
+        question: "Which principle states that evidence should be preserved in its original state?",
+        options: [
+            "Chain of custody",
+            "Order of volatility",
+            "Preservation of evidence",
+            "Legal hold"
+        ],
+        correct: 2,
+        explanation: "Preservation of evidence is the principle that original evidence should be protected and preserved. Chain of custody tracks who handles evidence, order of volatility determines collection priority, and legal hold prevents destruction of evidence."
+    },
+    {
+        topic: "Digital Forensics",
+        question: "What is the order of volatility in digital forensics?",
+        options: [
+            "Priority for collecting evidence based on how quickly it's lost",
+            "Sequence of security incidents",
+            "Order of file system analysis",
+            "Timeline of user activities"
+        ],
+        correct: 0,
+        explanation: "Order of volatility refers to collecting digital evidence in order from most volatile (RAM, cache) to least volatile (hard drives, backups) to preserve data before it's lost."
+    },
+    {
+        topic: "Vulnerability Management",
+        question: "What is the primary purpose of vulnerability scanning?",
+        options: [
+            "Exploit vulnerabilities",
+            "Identify potential security weaknesses",
+            "Remove malware",
+            "Monitor network traffic"
+        ],
+        correct: 1,
+        explanation: "Vulnerability scanning identifies potential security weaknesses in systems, applications, and networks so they can be remediated before attackers exploit them."
+    },
+    {
+        topic: "Vulnerability Management",
+        question: "What is the difference between vulnerability scanning and penetration testing?",
+        options: [
+            "Scanning is passive, penetration testing actively exploits",
+            "Scanning is manual, penetration testing is automated",
+            "Scanning is external, penetration testing is internal",
+            "No significant difference"
+        ],
+        correct: 0,
+        explanation: "Vulnerability scanning passively identifies potential vulnerabilities, while penetration testing actively attempts to exploit vulnerabilities to determine their real-world impact."
+    },
+    {
+        topic: "Penetration Testing",
+        question: "Which type of testing simulates a real-world attack with no prior knowledge?",
+        options: [
+            "White box testing",
+            "Gray box testing",
+            "Black box testing",
+            "Clear box testing"
+        ],
+        correct: 2,
+        explanation: "Black box testing (also called blind testing) simulates an external attack where the tester has no prior knowledge of the target system's internals. White box testing has full knowledge, and gray box has partial knowledge."
+    },
+    {
+        topic: "SIEM",
+        question: "What is the purpose of SIEM (Security Information and Event Management)?",
+        options: [
+            "Centralize log collection and security event analysis",
+            "Provide network firewall protection",
+            "Encrypt data at rest",
+            "Manage user identities and access"
+        ],
+        correct: 0,
+        explanation: "SIEM systems aggregate, analyze, and correlate log data from multiple sources to provide real-time security event monitoring, threat detection, and compliance reporting."
+    },
+    {
+        topic: "Network Security",
+        question: "What is the primary function of an IDS (Intrusion Detection System)?",
+        options: [
+            "Block malicious traffic automatically",
+            "Monitor and alert on suspicious activity",
+            "Encrypt sensitive data",
+            "Manage user access permissions"
+        ],
+        correct: 1,
+        explanation: "An IDS monitors network or system activities for malicious activities or policy violations and generates alerts. An IPS (Intrusion Prevention System) can actively block threats, while an IDS only detects and alerts."
+    },
+    {
+        topic: "Network Security",
+        question: "What is the primary purpose of a WAF (Web Application Firewall)?",
+        options: [
+            "Filter network traffic between networks",
+            "Protect web applications from attacks",
+            "Encrypt web traffic",
+            "Load balance web servers"
+        ],
+        correct: 1,
+        explanation: "A WAF protects web applications by filtering and monitoring HTTP traffic between the web application and the Internet. It defends against attacks like SQL injection, XSS, and other web-based threats."
+    },
+    {
+        topic: "Network Security",
+        question: "What does NAC (Network Access Control) provide?",
+        options: [
+            "Encryption for network communications",
+            "Authentication and authorization for network access",
+            "Network address translation",
+            "Network performance monitoring"
+        ],
+        correct: 1,
+        explanation: "NAC controls access to network resources by authenticating devices and users, checking compliance with security policies, and enforcing appropriate access levels before allowing network connection."
+    },
+    {
+        topic: "Data Protection",
+        question: "What is the primary purpose of data classification?",
+        options: [
+            "Organize files on storage systems",
+            "Determine appropriate security controls",
+            "Compress data for efficiency",
+            "Improve data retrieval speed"
+        ],
+        correct: 1,
+        explanation: "Data classification categorizes data based on sensitivity and criticality to determine appropriate security controls, handling procedures, and access requirements for each classification level."
+    },
+    {
+        topic: "Data Protection",
+        question: "What does DLP (Data Loss Prevention) protect against?",
+        options: [
+            "Hardware failures",
+            "Unauthorized data exfiltration",
+            "SQL injection",
+            "Malware infections"
+        ],
+        correct: 1,
+        explanation: "DLP systems prevent unauthorized transmission or exfiltration of sensitive data by monitoring, detecting, and blocking data in use, in motion, or at rest."
+    },
+    {
+        topic: "Backup & Recovery",
+        question: "What type of backup includes only changed data since the last full backup?",
+        options: [
+            "Full backup",
+            "Incremental backup",
+            "Differential backup",
+            "Snapshot backup"
+        ],
+        correct: 2,
+        explanation: "A differential backup includes all changes since the last full backup. An incremental backup only includes changes since the last backup of any type."
+    },
+    {
+        topic: "Backup & Recovery",
+        question: "What does RPO (Recovery Point Objective) define?",
+        options: [
+            "How quickly systems must be restored",
+            "Maximum acceptable data loss",
+            "Backup retention period",
+            "System uptime requirement"
+        ],
+        correct: 1,
+        explanation: "RPO defines the maximum acceptable amount of data loss measured in time. For example, an RPO of 1 hour means you can tolerate losing up to 1 hour of data. RTO defines recovery time."
+    },
+    {
+        topic: "Backup & Recovery",
+        question: "What does RTO (Recovery Time Objective) define?",
+        options: [
+            "Maximum acceptable data loss",
+            "Time to restore from backup",
+            "Maximum acceptable downtime",
+            "Backup frequency"
+        ],
+        correct: 2,
+        explanation: "RTO defines the maximum acceptable amount of time a system can be down after a failure. It determines how quickly recovery processes must restore systems to acceptable service levels."
+    },
+
+    // Governance, Risk & Compliance (Domain 5.0)
+    {
+        topic: "Risk Management",
+        question: "What does the CIA triad stand for in information security?",
+        options: [
+            "Control, Integrity, Authentication",
+            "Confidentiality, Integrity, Availability",
+            "Confidentiality, Identity, Authorization",
+            "Control, Identity, Availability"
+        ],
+        correct: 1,
+        explanation: "The CIA triad stands for Confidentiality, Integrity, and Availability. These are the three core principles that guide information security policies and controls."
+    },
+    {
+        topic: "Risk Management",
+        question: "What is risk acceptance?",
+        options: [
+            "Eliminating the risk entirely",
+            "Transferring the risk to another party",
+            "Acknowledging and tolerating the risk",
+            "Reducing the likelihood of the risk"
+        ],
+        correct: 2,
+        explanation: "Risk acceptance means acknowledging a risk exists and deciding to tolerate it without taking additional action, typically because the cost of mitigation exceeds the potential impact."
+    },
+    {
+        topic: "Risk Management",
+        question: "What is the difference between qualitative and quantitative risk assessment?",
+        options: [
+            "Qualitative uses numbers, quantitative uses descriptions",
+            "Qualitative uses descriptions, quantitative uses numerical values",
+            "No difference",
+            "Qualitative is more accurate"
+        ],
+        correct: 1,
+        explanation: "Qualitative risk assessment uses descriptive scales (high, medium, low), while quantitative assessment uses numerical values and calculations like Annual Loss Expectancy (ALE) to measure risk."
+    },
+    {
+        topic: "Compliance",
+        question: "Which compliance framework focuses on payment card data security?",
+        options: [
+            "HIPAA",
+            "PCI DSS",
+            "SOX",
+            "GDPR"
+        ],
+        correct: 1,
+        explanation: "PCI DSS (Payment Card Industry Data Security Standard) specifically addresses the security of credit card transactions and cardholder data. HIPAA is for healthcare, SOX for financial reporting, and GDPR for data privacy."
+    },
+    {
+        topic: "Compliance",
+        question: "What does GDPR primarily regulate?",
+        options: [
+            "Healthcare data",
+            "Financial reporting",
+            "Personal data and privacy",
+            "Payment card data"
+        ],
+        correct: 2,
+        explanation: "GDPR (General Data Protection Regulation) regulates the processing and protection of personal data and privacy rights for individuals in the European Union."
+    },
+    {
+        topic: "Privacy",
+        question: "What is the right to be forgotten?",
+        options: [
+            "Encrypting old data",
+            "Requesting deletion of personal data",
+            "Anonymizing user accounts",
+            "Disabling user access"
+        ],
+        correct: 1,
+        explanation: "The right to be forgotten (or right to erasure) allows individuals to request that organizations delete their personal data under certain conditions, as defined in regulations like GDPR."
+    },
+    {
+        topic: "Agreements",
+        question: "What is the purpose of an NDA (Non-Disclosure Agreement)?",
+        options: [
+            "Define service level expectations",
+            "Protect confidential information",
+            "Establish interconnection requirements",
+            "Define job responsibilities"
+        ],
+        correct: 1,
+        explanation: "An NDA is a legal contract that protects confidential information by requiring parties not to disclose it to unauthorized third parties."
+    },
+    {
+        topic: "Agreements",
+        question: "What does an SLA (Service Level Agreement) define?",
+        options: [
+            "Security requirements",
+            "Expected service performance and availability",
+            "Data privacy requirements",
+            "Incident response procedures"
+        ],
+        correct: 1,
+        explanation: "An SLA defines the expected level of service, including performance metrics, availability, responsibilities, and penalties for not meeting agreed-upon service levels."
+    },
+    {
+        topic: "Security Awareness",
+        question: "What is the primary goal of security awareness training?",
+        options: [
+            "Teach employees to write secure code",
+            "Educate users about security policies and threats",
+            "Train security analysts",
+            "Certify security professionals"
+        ],
+        correct: 1,
+        explanation: "Security awareness training educates all users about security policies, common threats, and safe practices to reduce human-related security risks."
+    },
+    {
+        topic: "Defense in Depth",
+        question: "What does the principle of defense in depth involve?",
+        options: [
+            "Using only the strongest security control",
+            "Implementing multiple layers of security",
+            "Focusing security on the perimeter",
+            "Encrypting all data by default"
+        ],
+        correct: 1,
+        explanation: "Defense in depth uses multiple layers of security controls throughout a system, so if one layer fails, others still provide protection. This redundancy improves overall security posture."
+    },
+
+    // Additional Technical Questions
+    {
+        topic: "Network Protocols",
+        question: "Which protocol operates at the Network layer of the OSI model?",
+        options: [
+            "HTTP",
+            "TCP",
+            "IP",
+            "Ethernet"
+        ],
+        correct: 2,
+        explanation: "IP (Internet Protocol) operates at the Network layer (Layer 3). HTTP is Application layer, TCP is Transport layer, and Ethernet is Data Link layer."
+    },
+    {
+        topic: "Network Protocols",
+        question: "What is the purpose of ARP (Address Resolution Protocol)?",
+        options: [
+            "Translate domain names to IP addresses",
+            "Map IP addresses to MAC addresses",
+            "Route packets between networks",
+            "Encrypt network traffic"
+        ],
+        correct: 1,
+        explanation: "ARP maps IP addresses to MAC (physical) addresses on a local network. DNS translates domain names to IP addresses, routers forward packets between networks, and protocols like TLS/SSL encrypt traffic."
+    },
+    {
+        topic: "Network Protocols",
+        question: "Which protocol is used for network time synchronization?",
+        options: [
+            "SNMP",
+            "NTP",
+            "DNS",
+            "DHCP"
+        ],
+        correct: 1,
+        explanation: "NTP (Network Time Protocol) synchronizes clocks of computer systems over networks. Accurate time synchronization is critical for security logging, authentication, and incident response."
+    },
+    {
+        topic: "PKI",
+        question: "What does PKI stand for?",
+        options: [
+            "Private Key Infrastructure",
+            "Public Key Infrastructure",
+            "Protected Key Integration",
+            "Primary Key Identification"
+        ],
+        correct: 1,
+        explanation: "PKI (Public Key Infrastructure) is a framework of policies, procedures, and technologies for managing digital certificates and public-key encryption."
+    },
+    {
+        topic: "PKI",
+        question: "What is the purpose of certificate pinning?",
+        options: [
+            "Prevent certificate revocation",
+            "Prevent man-in-the-middle attacks",
+            "Speed up certificate validation",
+            "Encrypt certificate data"
+        ],
+        correct: 1,
+        explanation: "Certificate pinning prevents MitM attacks by having applications trust only specific certificates or public keys rather than any certificate signed by a trusted CA, protecting against compromised CAs."
+    },
+    {
+        topic: "Application Security",
+        question: "What is the purpose of input validation?",
+        options: [
+            "Verify user credentials",
+            "Prevent injection attacks",
+            "Encrypt user input",
+            "Log user activity"
+        ],
+        correct: 1,
+        explanation: "Input validation checks and sanitizes user input to prevent injection attacks (SQL injection, XSS, command injection, etc.) by ensuring input conforms to expected formats and doesn't contain malicious code."
+    },
+    {
+        topic: "Application Security",
+        question: "What is secure coding?",
+        options: [
+            "Encrypting source code",
+            "Writing code that is resistant to vulnerabilities",
+            "Obfuscating code",
+            "Code review process"
+        ],
+        correct: 1,
+        explanation: "Secure coding involves following best practices and guidelines to write code that is resistant to security vulnerabilities, reducing the risk of exploitation."
+    },
+    {
+        topic: "Mobile Security",
+        question: "What is the primary concern with BYOD (Bring Your Own Device)?",
+        options: [
+            "Device performance",
+            "Security and data protection",
+            "Device compatibility",
+            "User training"
+        ],
+        correct: 1,
+        explanation: "The primary security concern with BYOD is protecting corporate data on personal devices that may lack proper security controls, be shared with others, or be lost or stolen."
+    },
+    {
+        topic: "Mobile Security",
+        question: "What does MDM (Mobile Device Management) provide?",
+        options: [
+            "Mobile app development",
+            "Centralized management and security of mobile devices",
+            "Mobile network optimization",
+            "Mobile device repair"
+        ],
+        correct: 1,
+        explanation: "MDM solutions provide centralized management, security enforcement, and monitoring of mobile devices in an enterprise environment."
+    },
+    {
+        topic: "Containerization",
+        question: "Which security concept involves isolating applications in containers?",
+        options: [
+            "Virtualization",
+            "Segmentation",
+            "Sandboxing",
+            "Encryption"
+        ],
+        correct: 2,
+        explanation: "Sandboxing isolates applications or processes in a controlled environment (like containers) to prevent them from affecting the host system or other applications, limiting potential damage from exploits."
+    },
+    {
+        topic: "Honeypots",
+        question: "What is the primary purpose of a honeypot?",
+        options: [
+            "Encrypt sensitive data at rest",
+            "Detect and analyze malicious activity",
+            "Authenticate users accessing the network",
+            "Provide redundancy for critical systems"
+        ],
+        correct: 1,
+        explanation: "A honeypot is a decoy system designed to attract and detect attackers. It allows security teams to observe attack techniques and gather intelligence on threats without risking production systems."
+    },
+    {
+        topic: "Air Gap",
+        question: "What does the term 'air gap' mean in security?",
+        options: [
+            "A firewall between network segments",
+            "Physical separation from networks",
+            "A VPN connection",
+            "Encrypted wireless communication"
+        ],
+        correct: 1,
+        explanation: "An air gap is a security measure where a computer or network is physically isolated from other networks, especially the Internet, to prevent unauthorized access or data exfiltration."
+    },
+    {
+        topic: "Steganography",
+        question: "What does steganography do?",
+        options: [
+            "Encrypts data for confidentiality",
+            "Hides data within other files",
+            "Compresses data for storage",
+            "Verifies data integrity"
+        ],
+        correct: 1,
+        explanation: "Steganography conceals data within other files (like images or audio) to hide its existence. Unlike encryption which makes data unreadable, steganography makes data invisible."
+    },
+    {
+        topic: "Attack Techniques",
+        question: "Which type of attack exploits trust relationships between systems?",
+        options: [
+            "Brute force",
+            "Lateral movement",
+            "Password spraying",
+            "Packet sniffing"
+        ],
+        correct: 1,
+        explanation: "Lateral movement is when attackers move through a network by exploiting trust relationships and elevated privileges after initial compromise, accessing additional systems and data."
+    },
+    {
+        topic: "Attack Techniques",
+        question: "What is password spraying?",
+        options: [
+            "Using rainbow tables to crack passwords",
+            "Trying common passwords against many accounts",
+            "Brute-forcing a single account",
+            "Stealing password hashes"
+        ],
+        correct: 1,
+        explanation: "Password spraying tries a few common passwords against many user accounts to avoid account lockouts, rather than trying many passwords against a single account."
+    },
+    {
+        topic: "Supply Chain",
+        question: "Which attack vector targets vulnerabilities in third-party code?",
+        options: [
+            "Zero-day exploit",
+            "Supply chain attack",
+            "Watering hole attack",
+            "Drive-by download"
+        ],
+        correct: 1,
+        explanation: "Supply chain attacks compromise third-party vendors, suppliers, or software components to gain access to target organizations through trusted relationships or software dependencies."
+    },
+    {
+        topic: "Indicators of Compromise",
+        question: "Which of the following is an indicator of compromise (IoC)?",
+        options: [
+            "High CPU usage during business hours",
+            "Unusual outbound network connections to unknown IPs",
+            "Users changing passwords",
+            "Software updates being installed"
+        ],
+        correct: 1,
+        explanation: "Unusual outbound connections to unknown IP addresses, especially to known malicious IPs or at odd times, is a common indicator that a system may be compromised."
+    },
+    {
+        topic: "Threat Intelligence",
+        question: "What is threat intelligence?",
+        options: [
+            "Encrypting threat data",
+            "Information about current and emerging threats",
+            "Blocking all threats automatically",
+            "Training employees about threats"
+        ],
+        correct: 1,
+        explanation: "Threat intelligence is evidence-based information about current and emerging threats, including tactics, techniques, and indicators, used to inform security decisions and improve defenses."
+    },
+    {
+        topic: "Security Baselines",
+        question: "What is a security baseline?",
+        options: [
+            "Minimum security settings and configurations",
+            "Maximum security restrictions",
+            "Average security performance",
+            "Security training requirements"
+        ],
+        correct: 0,
+        explanation: "A security baseline defines the minimum security settings and configurations required for systems and applications to meet organizational security standards."
+    },
+    {
+        topic: "Change Management",
+        question: "Why is change management important for security?",
+        options: [
+            "Speeds up system changes",
+            "Reduces costs",
+            "Prevents unauthorized changes that could introduce vulnerabilities",
+            "Eliminates the need for testing"
+        ],
+        correct: 2,
+        explanation: "Change management ensures changes are properly reviewed, tested, and approved before implementation, preventing unauthorized modifications that could introduce security vulnerabilities."
+    },
+    {
+        topic: "Patch Management",
+        question: "What is the primary goal of patch management?",
+        options: [
+            "Add new features to systems",
+            "Apply security updates to fix vulnerabilities",
+            "Improve system performance",
+            "Reduce storage requirements"
+        ],
+        correct: 1,
+        explanation: "The primary goal of patch management is to systematically apply security updates and fixes to address known vulnerabilities before they can be exploited."
+    },
+    {
+        topic: "Logging & Monitoring",
+        question: "Why is centralized logging important?",
+        options: [
+            "Reduces storage costs",
+            "Simplifies log analysis and correlation",
+            "Improves system performance",
+            "Eliminates the need for backups"
+        ],
+        correct: 1,
+        explanation: "Centralized logging aggregates logs from multiple sources, making it easier to analyze, correlate events, detect security incidents, and maintain compliance."
+    },
+    {
+        topic: "Access Reviews",
+        question: "What is the purpose of periodic access reviews?",
+        options: [
+            "Test system performance",
+            "Verify users still need their assigned access rights",
+            "Update user passwords",
+            "Install security patches"
+        ],
+        correct: 1,
+        explanation: "Periodic access reviews ensure users still need their assigned permissions, helping enforce least privilege and identify orphaned or excessive access rights."
+    },
+    {
+        topic: "Security Operations",
+        question: "What is a security operations center (SOC)?",
+        options: [
+            "Physical security facility",
+            "Centralized team monitoring and responding to security events",
+            "Backup data center",
+            "Network equipment room"
+        ],
+        correct: 1,
+        explanation: "A SOC is a centralized team that continuously monitors, detects, analyzes, and responds to cybersecurity incidents using technology, processes, and people."
+    },
+    {
+        topic: "Threat Hunting",
+        question: "What is threat hunting?",
+        options: [
+            "Waiting for security alerts",
+            "Proactively searching for hidden threats",
+            "Removing detected malware",
+            "Blocking known threats"
+        ],
+        correct: 1,
+        explanation: "Threat hunting is the proactive process of searching through networks and systems to detect and isolate advanced threats that evade existing security solutions."
+    },
+    {
+        topic: "Separation of Duties",
+        question: "What does separation of duties prevent?",
+        options: [
+            "Unauthorized access",
+            "Fraud by requiring collusion",
+            "System failures",
+            "Data loss"
+        ],
+        correct: 1,
+        explanation: "Separation of duties divides critical tasks among multiple people, making fraud or errors more difficult because it would require collusion between multiple individuals."
+    },
+    {
+        topic: "Job Rotation",
+        question: "What security benefit does job rotation provide?",
+        options: [
+            "Improves employee skills",
+            "Helps detect fraud or unauthorized activities",
+            "Reduces training costs",
+            "Increases productivity"
+        ],
+        correct: 1,
+        explanation: "Job rotation helps detect fraudulent activities or policy violations because different people reviewing processes are more likely to notice irregularities or unauthorized actions."
+    },
+    {
+        topic: "Mandatory Vacations",
+        question: "Why do some organizations require mandatory vacations?",
+        options: [
+            "Improve employee morale",
+            "Detect fraud when someone else performs their duties",
+            "Reduce payroll costs",
+            "Comply with labor laws"
+        ],
+        correct: 1,
+        explanation: "Mandatory vacations force employees to be away from their duties, allowing others to perform their tasks and potentially discover fraudulent activities or security violations."
+    },
+    {
+        topic: "Data Sovereignty",
+        question: "What is data sovereignty?",
+        options: [
+            "Data encryption requirements",
+            "Data subject to laws of the country where it's stored",
+            "Data ownership rights",
+            "Data classification levels"
+        ],
+        correct: 1,
+        explanation: "Data sovereignty means data is subject to the laws and regulations of the country where it's physically stored, which affects cloud storage and international data transfers."
+    },
+    {
+        topic: "Data Retention",
+        question: "Why is a data retention policy important?",
+        options: [
+            "Saves storage space",
+            "Ensures compliance and defines how long data is kept",
+            "Improves system performance",
+            "Reduces backup time"
+        ],
+        correct: 1,
+        explanation: "Data retention policies define how long different types of data must be kept to meet legal, regulatory, and business requirements, while also specifying when data should be securely deleted."
+    },
+    {
+        topic: "Cryptography",
+        question: "What is perfect forward secrecy?",
+        options: [
+            "Encrypting data multiple times",
+            "Session keys not compromised if long-term key is compromised",
+            "Using the longest possible keys",
+            "Encrypting both data and metadata"
+        ],
+        correct: 1,
+        explanation: "Perfect forward secrecy ensures that session keys remain secure even if the long-term private key is compromised, protecting past communications from future compromise."
+    },
+    {
+        topic: "Blockchain",
+        question: "What security property does blockchain provide?",
+        options: [
+            "Complete privacy",
+            "Immutability of transaction records",
+            "Unlimited scalability",
+            "Real-time processing"
+        ],
+        correct: 1,
+        explanation: "Blockchain provides immutability through cryptographic hashing and distributed consensus, making it extremely difficult to alter historical transaction records without detection."
+    },
+    {
+        topic: "IoT Security",
+        question: "What is a major security concern with IoT devices?",
+        options: [
+            "High cost",
+            "Weak default credentials and limited security features",
+            "Complex setup",
+            "Short battery life"
+        ],
+        correct: 1,
+        explanation: "Many IoT devices have weak default credentials, limited security features, and infrequent updates, making them vulnerable targets that can be exploited to access networks."
+    },
+    {
+        topic: "Secure Boot",
+        question: "What does secure boot protect against?",
+        options: [
+            "Network attacks",
+            "Unauthorized or malicious boot-level code",
+            "SQL injection",
+            "Phishing attacks"
+        ],
+        correct: 1,
+        explanation: "Secure boot uses cryptographic signatures to ensure only trusted firmware and operating system code can execute during the boot process, preventing bootkits and rootkits."
+    },
+    {
+        topic: "TPM",
+        question: "What is a Trusted Platform Module (TPM)?",
+        options: [
+            "Antivirus software",
+            "Hardware chip for cryptographic operations",
+            "Network security device",
+            "Backup system"
+        ],
+        correct: 1,
+        explanation: "A TPM is a dedicated hardware chip that provides cryptographic functions, secure key storage, and hardware-based security features like secure boot and full disk encryption."
+    },
+    {
+        topic: "Disaster Recovery",
+        question: "What is the difference between a hot site and a cold site?",
+        options: [
+            "Temperature control",
+            "Readiness to resume operations",
+            "Geographic location",
+            "Size of the facility"
+        ],
+        correct: 1,
+        explanation: "A hot site is fully equipped and ready for immediate use, while a cold site is a basic facility requiring equipment installation and configuration before use. Hot sites enable faster recovery but cost more."
+    },
+    {
+        topic: "Business Continuity",
+        question: "What is business continuity planning?",
+        options: [
+            "Planning for company growth",
+            "Ensuring operations continue during disruptions",
+            "Annual budget planning",
+            "Employee succession planning"
+        ],
+        correct: 1,
+        explanation: "Business continuity planning ensures critical business functions can continue during and after a disruption, minimizing downtime and maintaining operations."
+    },
+    {
+        topic: "High Availability",
+        question: "What does high availability aim to achieve?",
+        options: [
+            "Maximum security",
+            "Minimum downtime and continuous operations",
+            "Lowest cost",
+            "Fastest performance"
+        ],
+        correct: 1,
+        explanation: "High availability systems are designed to minimize downtime and provide continuous operations through redundancy, failover mechanisms, and fault tolerance."
+    },
+    {
+        topic: "Redundancy",
+        question: "What is RAID used for?",
+        options: [
+            "Network security",
+            "Disk redundancy and performance",
+            "User authentication",
+            "Data encryption"
+        ],
+        correct: 1,
+        explanation: "RAID (Redundant Array of Independent Disks) provides disk redundancy to protect against drive failures and can improve performance through data striping."
+    },
+    {
+        topic: "Load Balancing",
+        question: "What is the primary purpose of load balancing?",
+        options: [
+            "Encrypt network traffic",
+            "Distribute traffic across multiple servers",
+            "Block malicious traffic",
+            "Monitor network performance"
+        ],
+        correct: 1,
+        explanation: "Load balancing distributes incoming network traffic across multiple servers to optimize resource use, maximize throughput, minimize response time, and avoid overload."
+    },
+    {
+        topic: "Faraday Cage",
+        question: "What does a Faraday cage protect against?",
+        options: [
+            "Physical intrusion",
+            "Electromagnetic interference and eavesdropping",
+            "Fire damage",
+            "Water damage"
+        ],
+        correct: 1,
+        explanation: "A Faraday cage is an enclosure that blocks electromagnetic fields, protecting equipment from interference and preventing electromagnetic eavesdropping or data leakage."
+    },
+    {
+        topic: "Physical Security",
+        question: "What is the purpose of a mantrap?",
+        options: [
+            "Detect intruders",
+            "Control access by allowing only one person at a time",
+            "Monitor surveillance cameras",
+            "Test security systems"
+        ],
+        correct: 1,
+        explanation: "A mantrap is a physical security access control system with two interlocking doors that allows only one person to pass through at a time, preventing tailgating."
+    },
+    {
+        topic: "Environmental Controls",
+        question: "Why are environmental controls important in data centers?",
+        options: [
+            "Reduce energy costs",
+            "Protect equipment from temperature and humidity damage",
+            "Improve network speed",
+            "Increase storage capacity"
+        ],
+        correct: 1,
+        explanation: "Environmental controls maintain proper temperature, humidity, and airflow to prevent equipment damage, ensure reliable operation, and extend hardware lifespan."
+    },
+    {
+        topic: "Media Sanitization",
+        question: "What is the most secure method of destroying data on a hard drive?",
+        options: [
+            "Formatting the drive",
+            "Physical destruction",
+            "Deleting all files",
+            "Encrypting the drive"
+        ],
+        correct: 1,
+        explanation: "Physical destruction (shredding, crushing, or incinerating) is the most secure method because it makes data recovery impossible. Formatting and deletion can often be reversed."
+    },
+    {
+        topic: "Data Destruction",
+        question: "What is degaussing?",
+        options: [
+            "Encrypting data",
+            "Using magnetic fields to erase data",
+            "Physically shredding drives",
+            "Overwriting data multiple times"
+        ],
+        correct: 1,
+        explanation: "Degaussing uses powerful magnetic fields to disrupt the magnetic domains on storage media, effectively erasing data. It's particularly effective for magnetic media like hard drives and tapes."
+    },
+    {
+        topic: "Remote Access",
+        question: "What security protocol should be used for remote access?",
+        options: [
+            "Telnet",
+            "VPN with strong encryption",
+            "FTP",
+            "HTTP"
+        ],
+        correct: 1,
+        explanation: "VPNs with strong encryption (like IPsec or SSL/TLS) provide secure remote access by creating encrypted tunnels. Telnet, FTP, and HTTP transmit data unencrypted."
+    },
+    {
+        topic: "Zero Trust",
+        question: "What is the core principle of zero trust security?",
+        options: [
+            "Trust all internal users",
+            "Never trust, always verify",
+            "Trust verified devices",
+            "Trust the network perimeter"
+        ],
+        correct: 1,
+        explanation: "Zero trust assumes no user or system should be automatically trusted, requiring continuous verification of every access request regardless of location or network."
+    },
+    {
+        topic: "Microsegmentation",
+        question: "What is microsegmentation?",
+        options: [
+            "Dividing users into small groups",
+            "Creating very small network segments with granular security",
+            "Segmenting hard drives",
+            "Breaking up large files"
+        ],
+        correct: 1,
+        explanation: "Microsegmentation divides networks into very small segments with granular security policies between them, limiting lateral movement and containing breaches."
+    },
+    {
+        topic: "Attack Frameworks",
+        question: "What is the MITRE ATT&CK framework?",
+        options: [
+            "Compliance standard",
+            "Knowledge base of adversary tactics and techniques",
+            "Encryption algorithm",
+            "Network protocol"
+        ],
+        correct: 1,
+        explanation: "MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations, used for threat modeling and defense planning."
+    },
+    {
+        topic: "Security Models",
+        question: "What does the Bell-LaPadula model focus on?",
+        options: [
+            "Integrity",
+            "Confidentiality",
+            "Availability",
+            "Authentication"
+        ],
+        correct: 1,
+        explanation: "The Bell-LaPadula model focuses on confidentiality with rules like 'no read up' and 'no write down' to prevent unauthorized disclosure of classified information."
+    },
+    {
+        topic: "Due Diligence",
+        question: "What is security due diligence?",
+        options: [
+            "Ignoring security policies",
+            "Ensuring reasonable security measures are in place",
+            "Waiting for security incidents",
+            "Delegating all security responsibilities"
+        ],
+        correct: 1,
+        explanation: "Security due diligence means taking reasonable steps to ensure appropriate security measures are in place and maintained, demonstrating responsible security practices."
+    },
+    {
+        topic: "Privacy Impact Assessment",
+        question: "What is a Privacy Impact Assessment (PIA)?",
+        options: [
+            "Evaluating network performance",
+            "Analyzing how systems handle personal information",
+            "Testing encryption strength",
+            "Measuring security awareness"
+        ],
+        correct: 1,
+        explanation: "A PIA systematically analyzes how an organization's systems and processes collect, use, share, and maintain personal information, identifying privacy risks and mitigation strategies."
+    }
+];
+
         let currentQuestionIndex = 0;
         let currentSession = {
             answers: [],
