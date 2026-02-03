@@ -9,6 +9,7 @@
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #1a1a1a;
+            --bg-tertiary: #151515;
             --text-primary: #ffffff;
             --text-secondary: #888888;
             --accent: #00ff88;
@@ -69,8 +70,14 @@
             margin-top: -1rem;
         }
 
-        .start-btn {
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             margin-top: 2rem;
+        }
+
+        .start-btn, .sessions-btn {
             padding: 1.25rem 3rem;
             font-family: 'Manrope', sans-serif;
             font-size: 1rem;
@@ -85,12 +92,23 @@
             letter-spacing: 0.1em;
         }
 
-        .start-btn:hover {
+        .sessions-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .start-btn:hover, .sessions-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--accent-dim);
         }
 
-        .start-btn:active {
+        .sessions-btn:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .start-btn:active, .sessions-btn:active {
             transform: scale(0.98);
         }
 
@@ -165,6 +183,39 @@
             gap: 2rem;
             opacity: 0;
             animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .question-card::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .question-card::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 3px;
+        }
+
+        .question-card::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        .question-card::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        .topic-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .question-text {
@@ -241,7 +292,7 @@
         }
 
         .next-btn {
-            margin-top: auto;
+            margin-top: 1rem;
             padding: 1.25rem;
             font-family: 'Manrope', sans-serif;
             font-size: 1rem;
@@ -278,6 +329,7 @@
             gap: 2rem;
             padding: 2rem;
             text-align: center;
+            max-width: 600px;
         }
 
         .stats-screen.active {
@@ -325,7 +377,7 @@
             letter-spacing: 0.1em;
         }
 
-        .restart-btn {
+        .restart-btn, .view-sessions-btn {
             margin-top: 1rem;
             padding: 1.25rem 3rem;
             font-family: 'Manrope', sans-serif;
@@ -341,10 +393,189 @@
             letter-spacing: 0.1em;
         }
 
-        .restart-btn:hover {
+        .restart-btn:hover, .view-sessions-btn:hover {
             background: var(--accent);
             color: var(--bg-primary);
             box-shadow: 0 0 40px var(--accent-dim);
+        }
+
+        /* Sessions Screen */
+        .sessions-screen {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            height: 100vh;
+            flex-direction: column;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .sessions-screen.active {
+            display: flex;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .sessions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .sessions-title {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            padding: 0.75rem 1.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.875rem;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .sessions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .session-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .session-card:hover {
+            border-color: var(--accent-dim);
+            background: var(--bg-tertiary);
+        }
+
+        .session-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .session-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .session-score {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .session-score.good {
+            color: var(--success);
+        }
+
+        .session-score.average {
+            color: #ffaa00;
+        }
+
+        .session-score.poor {
+            color: var(--error);
+        }
+
+        .session-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .session-stat {
+            text-align: center;
+        }
+
+        .session-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .session-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        .topic-breakdown {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .topic-breakdown-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .topic-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .topic-name {
+            font-size: 0.875rem;
+        }
+
+        .topic-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .no-sessions {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 4rem 2rem;
+        }
+
+        .clear-sessions-btn {
+            padding: 0.75rem 1.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.875rem;
+            background: transparent;
+            color: var(--error);
+            border: 1px solid var(--error);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .clear-sessions-btn:hover {
+            background: var(--error);
+            color: var(--bg-primary);
         }
 
         /* Animations */
@@ -399,8 +630,16 @@
                 font-size: 2rem;
             }
 
-            .stats-value {
+            .stat-value {
                 font-size: 2rem;
+            }
+
+            .sessions-screen {
+                padding: 1rem;
+            }
+
+            .session-stats {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -411,7 +650,10 @@
         <div class="start-screen" id="startScreen">
             <div class="logo">SEC+</div>
             <div class="subtitle">SY0-701 Study Mode</div>
-            <button class="start-btn" onclick="startQuiz()">Start</button>
+            <div class="button-group">
+                <button class="start-btn" onclick="startQuiz()">Start</button>
+                <button class="sessions-btn" onclick="showSessions()">View Sessions</button>
+            </div>
         </div>
 
         <!-- Question Screen -->
@@ -421,12 +663,15 @@
             </div>
             
             <div class="question-header">
-                <div class="question-counter" id="questionCounter">1 / 50</div>
+                <div class="question-counter" id="questionCounter">1 / 200</div>
                 <button class="end-btn" onclick="endQuiz()">End</button>
             </div>
 
             <div class="question-card" id="questionCard">
-                <div class="question-text" id="questionText"></div>
+                <div>
+                    <div class="topic-badge" id="topicBadge"></div>
+                    <div class="question-text" id="questionText"></div>
+                </div>
                 <div class="options" id="options"></div>
                 <div id="explanationContainer"></div>
                 <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next</button>
@@ -455,566 +700,28 @@
                 </div>
             </div>
             <button class="restart-btn" onclick="restart()">Study Again</button>
+            <button class="view-sessions-btn" onclick="showSessions()">View All Sessions</button>
+        </div>
+
+        <!-- Sessions Screen -->
+        <div class="sessions-screen" id="sessionsScreen">
+            <div class="sessions-header">
+                <div class="sessions-title">Study Sessions</div>
+                <button class="back-btn" onclick="backToHome()">Back</button>
+            </div>
+            <div class="sessions-list" id="sessionsList"></div>
+            <button class="clear-sessions-btn" onclick="clearAllSessions()">Clear All Sessions</button>
         </div>
     </div>
 
+    <script src="questions.js"></script>
     <script>
-        // Security+ SY0-701 Practice Questions
-        const questions = [
-            {
-                question: "Which of the following best describes a technical security control?",
-                options: [
-                    "Policies and procedures documented in the security manual",
-                    "Security guards monitoring facility access points",
-                    "Firewall rules blocking unauthorized network traffic",
-                    "Employee security awareness training programs"
-                ],
-                correct: 2,
-                explanation: "Technical controls (also called logical controls) are security measures implemented through technology, such as firewalls, encryption, and access control systems. They are executed by computer systems rather than by people."
-            },
-            {
-                question: "What type of attack involves an attacker intercepting communication between two parties?",
-                options: [
-                    "Denial of Service (DoS)",
-                    "Man-in-the-Middle (MitM)",
-                    "SQL Injection",
-                    "Cross-Site Scripting (XSS)"
-                ],
-                correct: 1,
-                explanation: "A Man-in-the-Middle (MitM) attack occurs when an attacker secretly intercepts and possibly alters communication between two parties who believe they are directly communicating with each other."
-            },
-            {
-                question: "Which cryptographic algorithm is asymmetric?",
-                options: [
-                    "AES",
-                    "3DES",
-                    "RSA",
-                    "Blowfish"
-                ],
-                correct: 2,
-                explanation: "RSA is an asymmetric encryption algorithm that uses a pair of keys (public and private). AES, 3DES, and Blowfish are all symmetric encryption algorithms that use a single shared key."
-            },
-            {
-                question: "What is the primary purpose of a honeypot?",
-                options: [
-                    "To encrypt sensitive data at rest",
-                    "To detect and analyze malicious activity",
-                    "To authenticate users accessing the network",
-                    "To provide redundancy for critical systems"
-                ],
-                correct: 1,
-                explanation: "A honeypot is a decoy system designed to attract and detect attackers. It allows security teams to observe attack techniques and gather intelligence on threats without risking production systems."
-            },
-            {
-                question: "Which authentication factor is 'something you have'?",
-                options: [
-                    "Password",
-                    "Fingerprint",
-                    "Smart card",
-                    "PIN"
-                ],
-                correct: 2,
-                explanation: "A smart card represents 'something you have' in multi-factor authentication. Passwords and PINs are 'something you know', while fingerprints are 'something you are'."
-            },
-            {
-                question: "What does CIA stand for in information security?",
-                options: [
-                    "Control, Integrity, Authentication",
-                    "Confidentiality, Integrity, Availability",
-                    "Confidentiality, Identity, Authorization",
-                    "Control, Identity, Availability"
-                ],
-                correct: 1,
-                explanation: "The CIA triad stands for Confidentiality, Integrity, and Availability. These are the three core principles that guide information security policies and controls."
-            },
-            {
-                question: "Which protocol provides secure email transmission?",
-                options: [
-                    "SMTP",
-                    "POP3",
-                    "S/MIME",
-                    "IMAP"
-                ],
-                correct: 2,
-                explanation: "S/MIME (Secure/Multipurpose Internet Mail Extensions) provides encryption and digital signatures for email. SMTP, POP3, and IMAP are email protocols but don't inherently provide security features."
-            },
-            {
-                question: "What is the main difference between hashing and encryption?",
-                options: [
-                    "Hashing is reversible, encryption is not",
-                    "Hashing is one-way, encryption is two-way",
-                    "Hashing requires a key, encryption does not",
-                    "Hashing is slower than encryption"
-                ],
-                correct: 1,
-                explanation: "Hashing is a one-way function that cannot be reversed to obtain the original data. Encryption is a two-way function that can be decrypted using the appropriate key to recover the original data."
-            },
-            {
-                question: "Which of the following is an example of social engineering?",
-                options: [
-                    "Exploiting a buffer overflow vulnerability",
-                    "Brute-forcing a password",
-                    "Phishing via email",
-                    "Performing a port scan"
-                ],
-                correct: 2,
-                explanation: "Phishing is a form of social engineering that manipulates people into divulging confidential information or performing actions. The other options are technical attacks that don't rely on human manipulation."
-            },
-            {
-                question: "What port does HTTPS use by default?",
-                options: [
-                    "80",
-                    "443",
-                    "8080",
-                    "22"
-                ],
-                correct: 1,
-                explanation: "HTTPS uses port 443 by default. Port 80 is used for HTTP, port 8080 is an alternative HTTP port, and port 22 is used for SSH."
-            },
-            {
-                question: "Which type of malware is designed to hold data hostage?",
-                options: [
-                    "Trojan",
-                    "Worm",
-                    "Ransomware",
-                    "Rootkit"
-                ],
-                correct: 2,
-                explanation: "Ransomware encrypts a victim's files and demands payment for the decryption key. Trojans disguise themselves as legitimate software, worms self-replicate, and rootkits hide malicious activity."
-            },
-            {
-                question: "What does a DMZ (Demilitarized Zone) provide?",
-                options: [
-                    "Encrypted communication between networks",
-                    "Isolation layer between internal and external networks",
-                    "Backup storage for critical data",
-                    "Authentication services for remote users"
-                ],
-                correct: 1,
-                explanation: "A DMZ is a network segment that acts as a buffer zone between an internal trusted network and an external untrusted network (usually the Internet), providing an additional layer of security."
-            },
-            {
-                question: "Which of the following is NOT a valid security control category?",
-                options: [
-                    "Technical",
-                    "Administrative",
-                    "Physical",
-                    "Reactive"
-                ],
-                correct: 3,
-                explanation: "The three main categories of security controls are Technical (logical), Administrative (managerial), and Physical. 'Reactive' is not a standard control category, though controls can be classified by function as preventive, detective, corrective, etc."
-            },
-            {
-                question: "What is the purpose of ARP (Address Resolution Protocol)?",
-                options: [
-                    "Translate domain names to IP addresses",
-                    "Map IP addresses to MAC addresses",
-                    "Route packets between networks",
-                    "Encrypt network traffic"
-                ],
-                correct: 1,
-                explanation: "ARP maps IP addresses to MAC (physical) addresses on a local network. DNS translates domain names to IP addresses, routers forward packets between networks, and protocols like TLS/SSL encrypt traffic."
-            },
-            {
-                question: "Which attack exploits improperly sanitized user input in web applications?",
-                options: [
-                    "DDoS",
-                    "SQL Injection",
-                    "ARP Poisoning",
-                    "Session Hijacking"
-                ],
-                correct: 1,
-                explanation: "SQL Injection exploits web applications that don't properly validate or sanitize user input, allowing attackers to execute malicious SQL commands against the database."
-            },
-            {
-                question: "What is the primary function of an IDS (Intrusion Detection System)?",
-                options: [
-                    "Block malicious traffic automatically",
-                    "Monitor and alert on suspicious activity",
-                    "Encrypt sensitive data",
-                    "Manage user access permissions"
-                ],
-                correct: 1,
-                explanation: "An IDS monitors network or system activities for malicious activities or policy violations and generates alerts. An IPS (Intrusion Prevention System) can actively block threats, while an IDS only detects and alerts."
-            },
-            {
-                question: "Which principle ensures users have only the access rights they need?",
-                options: [
-                    "Defense in Depth",
-                    "Least Privilege",
-                    "Separation of Duties",
-                    "Need to Know"
-                ],
-                correct: 1,
-                explanation: "The Principle of Least Privilege means users should have the minimum access rights necessary to perform their job functions. This limits potential damage from accidents or malicious actions."
-            },
-            {
-                question: "What does PKI stand for?",
-                options: [
-                    "Private Key Infrastructure",
-                    "Public Key Infrastructure",
-                    "Protected Key Integration",
-                    "Primary Key Identification"
-                ],
-                correct: 1,
-                explanation: "PKI (Public Key Infrastructure) is a framework of policies, procedures, and technologies for managing digital certificates and public-key encryption."
-            },
-            {
-                question: "Which wireless security protocol is most secure?",
-                options: [
-                    "WEP",
-                    "WPA",
-                    "WPA2",
-                    "WPA3"
-                ],
-                correct: 3,
-                explanation: "WPA3 is the most current and secure wireless security protocol. WEP is severely outdated and broken, while WPA and WPA2 have known vulnerabilities that WPA3 addresses."
-            },
-            {
-                question: "What is a zero-day vulnerability?",
-                options: [
-                    "A vulnerability discovered but not yet exploited",
-                    "A vulnerability with no known patch or fix",
-                    "A vulnerability that only exists for one day",
-                    "A vulnerability in outdated software"
-                ],
-                correct: 1,
-                explanation: "A zero-day vulnerability is a security flaw that is unknown to the software vendor and for which no patch exists. The term refers to the fact that developers have 'zero days' to fix it before it can be exploited."
-            },
-            {
-                question: "Which cloud service model gives users the most control?",
-                options: [
-                    "SaaS (Software as a Service)",
-                    "PaaS (Platform as a Service)",
-                    "IaaS (Infrastructure as a Service)",
-                    "FaaS (Function as a Service)"
-                ],
-                correct: 2,
-                explanation: "IaaS provides the most control to users, offering virtualized computing resources. Users manage the OS, applications, and data. PaaS abstracts the infrastructure, and SaaS provides complete applications with minimal user control."
-            },
-            {
-                question: "What is the purpose of salting in password storage?",
-                options: [
-                    "Encrypt the password before hashing",
-                    "Add random data to prevent rainbow table attacks",
-                    "Compress the password to save storage space",
-                    "Verify password complexity requirements"
-                ],
-                correct: 1,
-                explanation: "Salting adds random data to passwords before hashing to ensure identical passwords produce different hashes. This defeats rainbow table attacks and makes password cracking much harder."
-            },
-            {
-                question: "Which protocol operates at the Network layer of the OSI model?",
-                options: [
-                    "HTTP",
-                    "TCP",
-                    "IP",
-                    "Ethernet"
-                ],
-                correct: 2,
-                explanation: "IP (Internet Protocol) operates at the Network layer (Layer 3). HTTP is Application layer, TCP is Transport layer, and Ethernet is Data Link layer."
-            },
-            {
-                question: "What type of backup includes only changed data since the last full backup?",
-                options: [
-                    "Full backup",
-                    "Incremental backup",
-                    "Differential backup",
-                    "Snapshot backup"
-                ],
-                correct: 2,
-                explanation: "A differential backup includes all changes since the last full backup. An incremental backup only includes changes since the last backup of any type."
-            },
-            {
-                question: "Which access control model uses security labels?",
-                options: [
-                    "DAC (Discretionary Access Control)",
-                    "MAC (Mandatory Access Control)",
-                    "RBAC (Role-Based Access Control)",
-                    "ABAC (Attribute-Based Access Control)"
-                ],
-                correct: 1,
-                explanation: "MAC (Mandatory Access Control) uses security labels (classifications) on subjects and objects. The system enforces access based on these labels according to a security policy that users cannot override."
-            },
-            {
-                question: "What is the primary purpose of a WAF (Web Application Firewall)?",
-                options: [
-                    "Filter network traffic between networks",
-                    "Protect web applications from attacks",
-                    "Encrypt web traffic",
-                    "Load balance web servers"
-                ],
-                correct: 1,
-                explanation: "A WAF protects web applications by filtering and monitoring HTTP traffic between the web application and the Internet. It defends against attacks like SQL injection, XSS, and other web-based threats."
-            },
-            {
-                question: "Which forensics principle states that evidence should be preserved in its original state?",
-                options: [
-                    "Chain of custody",
-                    "Order of volatility",
-                    "Preservation of evidence",
-                    "Legal hold"
-                ],
-                correct: 2,
-                explanation: "Preservation of evidence is the principle that original evidence should be protected and preserved. Chain of custody tracks who handles evidence, order of volatility determines collection priority, and legal hold prevents destruction of evidence."
-            },
-            {
-                question: "What does NAC (Network Access Control) provide?",
-                options: [
-                    "Encryption for network communications",
-                    "Authentication and authorization for network access",
-                    "Network address translation",
-                    "Network performance monitoring"
-                ],
-                correct: 1,
-                explanation: "NAC controls access to network resources by authenticating devices and users, checking compliance with security policies, and enforcing appropriate access levels before allowing network connection."
-            },
-            {
-                question: "Which attack targets the availability component of the CIA triad?",
-                options: [
-                    "Eavesdropping",
-                    "Data theft",
-                    "DDoS attack",
-                    "Man-in-the-Middle"
-                ],
-                correct: 2,
-                explanation: "DDoS (Distributed Denial of Service) attacks target availability by overwhelming systems and preventing legitimate users from accessing services. Eavesdropping and data theft target confidentiality, while MitM can affect integrity."
-            },
-            {
-                question: "What is the purpose of SIEM (Security Information and Event Management)?",
-                options: [
-                    "Centralize log collection and security event analysis",
-                    "Provide network firewall protection",
-                    "Encrypt data at rest",
-                    "Manage user identities and access"
-                ],
-                correct: 0,
-                explanation: "SIEM systems aggregate, analyze, and correlate log data from multiple sources to provide real-time security event monitoring, threat detection, and compliance reporting."
-            },
-            {
-                question: "Which type of testing simulates a real-world attack with no prior knowledge?",
-                options: [
-                    "White box testing",
-                    "Gray box testing",
-                    "Black box testing",
-                    "Clear box testing"
-                ],
-                correct: 2,
-                explanation: "Black box testing (also called blind testing) simulates an external attack where the tester has no prior knowledge of the target system's internals. White box testing has full knowledge, and gray box has partial knowledge."
-            },
-            {
-                question: "What does the term 'air gap' mean in security?",
-                options: [
-                    "A firewall between network segments",
-                    "Physical separation from networks",
-                    "A VPN connection",
-                    "Encrypted wireless communication"
-                ],
-                correct: 1,
-                explanation: "An air gap is a security measure where a computer or network is physically isolated from other networks, especially the Internet, to prevent unauthorized access or data exfiltration."
-            },
-            {
-                question: "Which compliance framework focuses on payment card data security?",
-                options: [
-                    "HIPAA",
-                    "PCI DSS",
-                    "SOX",
-                    "GDPR"
-                ],
-                correct: 1,
-                explanation: "PCI DSS (Payment Card Industry Data Security Standard) specifically addresses the security of credit card transactions and cardholder data. HIPAA is for healthcare, SOX for financial reporting, and GDPR for data privacy."
-            },
-            {
-                question: "What is privilege escalation?",
-                options: [
-                    "Granting users more permissions than needed",
-                    "Gaining higher access rights than authorized",
-                    "Encrypting privileged account credentials",
-                    "Monitoring privileged user activity"
-                ],
-                correct: 1,
-                explanation: "Privilege escalation is when an attacker or user gains elevated access rights beyond what they're authorized to have, potentially allowing them to perform unauthorized actions or access restricted data."
-            },
-            {
-                question: "Which protocol provides secure file transfer over SSH?",
-                options: [
-                    "FTP",
-                    "TFTP",
-                    "SFTP",
-                    "FTPS"
-                ],
-                correct: 2,
-                explanation: "SFTP (SSH File Transfer Protocol) provides secure file transfer over an SSH connection. FTPS uses SSL/TLS, while FTP and TFTP transmit data unencrypted."
-            },
-            {
-                question: "What is the primary concern with BYOD (Bring Your Own Device)?",
-                options: [
-                    "Device performance",
-                    "Security and data protection",
-                    "Device compatibility",
-                    "User training"
-                ],
-                correct: 1,
-                explanation: "The primary security concern with BYOD is protecting corporate data on personal devices that may lack proper security controls, be shared with others, or be lost or stolen."
-            },
-            {
-                question: "Which security concept involves isolating applications in containers?",
-                options: [
-                    "Virtualization",
-                    "Segmentation",
-                    "Sandboxing",
-                    "Encryption"
-                ],
-                correct: 2,
-                explanation: "Sandboxing isolates applications or processes in a controlled environment (like containers) to prevent them from affecting the host system or other applications, limiting potential damage from exploits."
-            },
-            {
-                question: "What does RPO (Recovery Point Objective) define?",
-                options: [
-                    "How quickly systems must be restored",
-                    "Maximum acceptable data loss",
-                    "Backup retention period",
-                    "System uptime requirement"
-                ],
-                correct: 1,
-                explanation: "RPO defines the maximum acceptable amount of data loss measured in time. For example, an RPO of 1 hour means you can tolerate losing up to 1 hour of data. RTO defines recovery time."
-            },
-            {
-                question: "Which attack involves flooding a network with ICMP echo requests?",
-                options: [
-                    "Smurf attack",
-                    "SYN flood",
-                    "Ping of death",
-                    "Fragmentation attack"
-                ],
-                correct: 0,
-                explanation: "A Smurf attack floods a network with ICMP echo requests (pings) sent to a broadcast address with the victim's spoofed source IP, causing all hosts to reply to the victim and overwhelming it."
-            },
-            {
-                question: "What is the purpose of certificate pinning?",
-                options: [
-                    "Prevent certificate revocation",
-                    "Prevent man-in-the-middle attacks",
-                    "Speed up certificate validation",
-                    "Encrypt certificate data"
-                ],
-                correct: 1,
-                explanation: "Certificate pinning prevents MitM attacks by having applications trust only specific certificates or public keys rather than any certificate signed by a trusted CA, protecting against compromised CAs."
-            },
-            {
-                question: "Which protocol is used for network time synchronization?",
-                options: [
-                    "SNMP",
-                    "NTP",
-                    "DNS",
-                    "DHCP"
-                ],
-                correct: 1,
-                explanation: "NTP (Network Time Protocol) synchronizes clocks of computer systems over networks. Accurate time synchronization is critical for security logging, authentication, and incident response."
-            },
-            {
-                question: "What is a logic bomb?",
-                options: [
-                    "Malware that spreads automatically",
-                    "Code that executes when conditions are met",
-                    "A denial of service attack",
-                    "A type of ransomware"
-                ],
-                correct: 1,
-                explanation: "A logic bomb is malicious code that remains dormant until specific conditions are met (like a date, user action, or event), at which point it executes its payload."
-            },
-            {
-                question: "Which of the following is an example of multi-factor authentication?",
-                options: [
-                    "Password and security question",
-                    "Fingerprint and PIN",
-                    "Two different passwords",
-                    "Username and password"
-                ],
-                correct: 1,
-                explanation: "Fingerprint (something you are) and PIN (something you know) represent two different authentication factors. Two passwords or password and security question are both 'something you know' - a single factor."
-            },
-            {
-                question: "What does steganography do?",
-                options: [
-                    "Encrypts data for confidentiality",
-                    "Hides data within other files",
-                    "Compresses data for storage",
-                    "Verifies data integrity"
-                ],
-                correct: 1,
-                explanation: "Steganography conceals data within other files (like images or audio) to hide its existence. Unlike encryption which makes data unreadable, steganography makes data invisible."
-            },
-            {
-                question: "Which type of attack exploits trust relationships between systems?",
-                options: [
-                    "Brute force",
-                    "Lateral movement",
-                    "Password spraying",
-                    "Packet sniffing"
-                ],
-                correct: 1,
-                explanation: "Lateral movement is when attackers move through a network by exploiting trust relationships and elevated privileges after initial compromise, accessing additional systems and data."
-            },
-            {
-                question: "What is the primary purpose of data classification?",
-                options: [
-                    "Organize files on storage systems",
-                    "Determine appropriate security controls",
-                    "Compress data for efficiency",
-                    "Improve data retrieval speed"
-                ],
-                correct: 1,
-                explanation: "Data classification categorizes data based on sensitivity and criticality to determine appropriate security controls, handling procedures, and access requirements for each classification level."
-            },
-            {
-                question: "Which attack vector targets vulnerabilities in third-party code?",
-                options: [
-                    "Zero-day exploit",
-                    "Supply chain attack",
-                    "Watering hole attack",
-                    "Drive-by download"
-                ],
-                correct: 1,
-                explanation: "Supply chain attacks compromise third-party vendors, suppliers, or software components to gain access to target organizations through trusted relationships or software dependencies."
-            },
-            {
-                question: "What does the principle of defense in depth involve?",
-                options: [
-                    "Using only the strongest security control",
-                    "Implementing multiple layers of security",
-                    "Focusing security on the perimeter",
-                    "Encrypting all data by default"
-                ],
-                correct: 1,
-                explanation: "Defense in depth uses multiple layers of security controls throughout a system, so if one layer fails, others still provide protection. This redundancy improves overall security posture."
-            },
-            {
-                question: "Which wireless attack creates a fake access point?",
-                options: [
-                    "Evil twin",
-                    "Deauthentication",
-                    "WPS attack",
-                    "Rogue AP"
-                ],
-                correct: 0,
-                explanation: "An evil twin attack creates a fake wireless access point that mimics a legitimate one to trick users into connecting, allowing the attacker to intercept traffic or steal credentials."
-            },
-            {
-                question: "What is the purpose of input validation?",
-                options: [
-                    "Verify user credentials",
-                    "Prevent injection attacks",
-                    "Encrypt user input",
-                    "Log user activity"
-                ],
-                correct: 1,
-                explanation: "Input validation checks and sanitizes user input to prevent injection attacks (SQL injection, XSS, command injection, etc.) by ensuring input conforms to expected formats and doesn't contain malicious code."
-            }
-        ];
-
         let currentQuestionIndex = 0;
-        let answeredQuestions = [];
+        let currentSession = {
+            answers: [],
+            startTime: null,
+            endTime: null
+        };
         let stats = {
             total: 0,
             correct: 0,
@@ -1022,6 +729,20 @@
             bestStreak: 0
         };
         let shuffledQuestions = [];
+        let sessions = [];
+
+        // Load sessions from localStorage
+        function loadSessions() {
+            const saved = localStorage.getItem('securityPlusSessions');
+            if (saved) {
+                sessions = JSON.parse(saved);
+            }
+        }
+
+        // Save sessions to localStorage
+        function saveSessions() {
+            localStorage.setItem('securityPlusSessions', JSON.stringify(sessions));
+        }
 
         function shuffle(array) {
             const shuffled = [...array];
@@ -1038,7 +759,11 @@
             
             shuffledQuestions = shuffle(questions);
             currentQuestionIndex = 0;
-            answeredQuestions = [];
+            currentSession = {
+                answers: [],
+                startTime: new Date().toISOString(),
+                endTime: null
+            };
             stats = { total: 0, correct: 0, streak: 0, bestStreak: 0 };
             
             loadQuestion();
@@ -1058,6 +783,7 @@
                 questionCard.style.animation = '';
             }, 10);
 
+            document.getElementById('topicBadge').textContent = question.topic;
             document.getElementById('questionText').textContent = question.question;
             document.getElementById('questionCounter').textContent = `${stats.total + 1} / ∞`;
             
@@ -1075,7 +801,6 @@
             document.getElementById('explanationContainer').innerHTML = '';
             document.getElementById('nextBtn').classList.remove('show');
             
-            // Update progress
             updateProgress();
         }
 
@@ -1083,7 +808,6 @@
             const question = shuffledQuestions[currentQuestionIndex];
             const options = document.querySelectorAll('.option');
             
-            // Disable all options
             options.forEach(opt => {
                 opt.classList.add('disabled');
                 opt.onclick = null;
@@ -1091,13 +815,22 @@
 
             const isCorrect = selectedIndex === question.correct;
             
-            // Mark selected and correct answers
             options[selectedIndex].classList.add(isCorrect ? 'correct' : 'incorrect');
             if (!isCorrect) {
                 options[question.correct].classList.add('correct');
             }
 
-            // Update stats
+            // Record answer
+            currentSession.answers.push({
+                questionId: currentQuestionIndex,
+                topic: question.topic,
+                question: question.question,
+                selectedOption: selectedIndex,
+                correctOption: question.correct,
+                isCorrect: isCorrect,
+                timestamp: new Date().toISOString()
+            });
+
             stats.total++;
             if (isCorrect) {
                 stats.correct++;
@@ -1107,7 +840,6 @@
                 stats.streak = 0;
             }
 
-            // Show explanation
             const explanationHTML = `
                 <div class="explanation">
                     <div class="explanation-label">${isCorrect ? 'Correct!' : 'Explanation'}</div>
@@ -1116,10 +848,7 @@
             `;
             document.getElementById('explanationContainer').innerHTML = explanationHTML;
 
-            // Show next button
             document.getElementById('nextBtn').classList.add('show');
-            
-            answeredQuestions.push(currentQuestionIndex);
         }
 
         function nextQuestion() {
@@ -1138,6 +867,21 @@
                 return;
             }
 
+            // Save session
+            currentSession.endTime = new Date().toISOString();
+            currentSession.stats = {
+                total: stats.total,
+                correct: stats.correct,
+                accuracy: Math.round((stats.correct / stats.total) * 100),
+                bestStreak: stats.bestStreak
+            };
+            
+            sessions.unshift(currentSession);
+            if (sessions.length > 50) {
+                sessions = sessions.slice(0, 50);
+            }
+            saveSessions();
+
             document.getElementById('questionScreen').classList.remove('active');
             document.getElementById('statsScreen').classList.add('active');
 
@@ -1152,8 +896,108 @@
         function restart() {
             document.getElementById('statsScreen').classList.remove('active');
             document.getElementById('questionScreen').classList.remove('active');
+            document.getElementById('sessionsScreen').classList.remove('active');
             document.getElementById('startScreen').style.display = 'flex';
         }
+
+        function showSessions() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('statsScreen').classList.remove('active');
+            document.getElementById('questionScreen').classList.remove('active');
+            document.getElementById('sessionsScreen').classList.add('active');
+            
+            renderSessions();
+        }
+
+        function backToHome() {
+            document.getElementById('sessionsScreen').classList.remove('active');
+            document.getElementById('startScreen').style.display = 'flex';
+        }
+
+        function renderSessions() {
+            const sessionsList = document.getElementById('sessionsList');
+            
+            if (sessions.length === 0) {
+                sessionsList.innerHTML = '<div class="no-sessions">No study sessions yet. Start studying to track your progress!</div>';
+                return;
+            }
+
+            sessionsList.innerHTML = sessions.map((session, index) => {
+                const date = new Date(session.startTime);
+                const dateStr = date.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                const accuracy = session.stats.accuracy;
+                const scoreClass = accuracy >= 80 ? 'good' : accuracy >= 60 ? 'average' : 'poor';
+
+                // Calculate topic breakdown
+                const topicStats = {};
+                session.answers.forEach(answer => {
+                    if (!topicStats[answer.topic]) {
+                        topicStats[answer.topic] = { correct: 0, total: 0 };
+                    }
+                    topicStats[answer.topic].total++;
+                    if (answer.isCorrect) {
+                        topicStats[answer.topic].correct++;
+                    }
+                });
+
+                const topicBreakdown = Object.entries(topicStats)
+                    .sort((a, b) => (a[1].correct / a[1].total) - (b[1].correct / b[1].total))
+                    .map(([topic, stats]) => {
+                        const topicAccuracy = Math.round((stats.correct / stats.total) * 100);
+                        return `
+                            <div class="topic-item">
+                                <div class="topic-name">${topic}</div>
+                                <div class="topic-score">${stats.correct}/${stats.total} (${topicAccuracy}%)</div>
+                            </div>
+                        `;
+                    }).join('');
+
+                return `
+                    <div class="session-card">
+                        <div class="session-header-row">
+                            <div class="session-date">${dateStr}</div>
+                            <div class="session-score ${scoreClass}">${accuracy}%</div>
+                        </div>
+                        <div class="session-stats">
+                            <div class="session-stat">
+                                <div class="session-stat-value">${session.stats.total}</div>
+                                <div class="session-stat-label">Questions</div>
+                            </div>
+                            <div class="session-stat">
+                                <div class="session-stat-value">${session.stats.correct}</div>
+                                <div class="session-stat-label">Correct</div>
+                            </div>
+                            <div class="session-stat">
+                                <div class="session-stat-value">${session.stats.bestStreak}</div>
+                                <div class="session-stat-label">Streak</div>
+                            </div>
+                        </div>
+                        <div class="topic-breakdown">
+                            <div class="topic-breakdown-title">Areas to Focus</div>
+                            ${topicBreakdown}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function clearAllSessions() {
+            if (confirm('Are you sure you want to clear all study sessions? This cannot be undone.')) {
+                sessions = [];
+                saveSessions();
+                renderSessions();
+            }
+        }
+
+        // Load sessions on page load
+        loadSessions();
     </script>
 </body>
 </html>
